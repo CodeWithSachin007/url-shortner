@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register | URL Shortener System{% endblock %}
+{% block content %}
+<section class="auth-card glass">
+    <h2>Create Account</h2>
+    <form method="POST" class="auth-form">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button class="btn primary loading-btn" type="submit">Register</button>
+    </form>
+    <p class="muted">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</section>
+{% endblock %}

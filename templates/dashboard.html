@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | URL Shortener System{% endblock %}
+{% block content %}
+<section class="dashboard-header glass">
+    <div>
+        <h2>Welcome, {{ current_user.name }}</h2>
+        <p>Manage your short links and view click analytics.</p>
+    </div>
+    <form class="shorten-form compact" method="POST" action="{{ url_for('shorten_url') }}">
+        <input type="url" name="original_url" placeholder="Paste long URL" required>
+        <input type="text" name="custom_code" placeholder="Custom code">
+        <button type="submit" class="btn primary loading-btn">Create</button>
+    </form>
+</section>
+
+<section class="dashboard-grid">
+    <div class="glass panel">
+        <h3>Analytics</h3>
+        <canvas id="analyticsChart" height="180"></canvas>
+    </div>
+
+    <div class="glass panel">
+        <h3>Your URLs</h3>
+        {% if urls %}
+            <div class="url-list">
+                {% for url in urls %}
+                <article class="url-item">
+                    <div class="url-info">
+                        <div class="url-title">{{ url.short_code }}</div>
+                        <div class="url-link">{{ url.original_url }}</div>
+                        <div class="url-meta">Clicks: <strong>{{ url.click_count }}</strong></div>
+                    </div>
+                    <div class="url-actions">
+                        <div class="short-link-row">
+                            <input type="text" value="{{ request.url_root[:-1] }}/{{ url.short_code }}" readonly id="short-{{ url.id }}">
+                            <button class="btn small copy-btn" data-copy-target="short-{{ url.id }}">Copy</button>
+                        </div>
+                        <div class="qr-wrap">
+                            <img src="{{ url_for('qr_image', filename=url.short_code ~ '.png') }}" alt="QR Code for {{ url.short_code }}">
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="muted">No URLs created yet. Use the form above to generate your first short link.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const chartLabels = {{ labels | tojson }};
+const chartData = {{ data | tojson }};
+</script>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+{% endblock %}

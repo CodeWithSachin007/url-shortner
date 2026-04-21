@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Home | URL Shortener System{% endblock %}
+{% block content %}
+<section class="landing">
+    <div class="landing-left">
+        <div class="hero-badge">Built for modern link sharing</div>
+        <h1>Make every link look sharper, feel smarter, and perform better.</h1>
+        <p>
+            Create elegant short URLs, generate QR codes instantly, and monitor performance from
+            a polished dashboard that feels premium from the first click.
+        </p>
+
+        <form class="shorten-form home-form" method="POST" action="{{ url_for('shorten_url') }}">
+            <input type="url" name="original_url" placeholder="Paste your long URL here" required>
+            <input type="text" name="custom_code" placeholder="Custom back-half (optional)">
+            <button type="submit" class="btn primary loading-btn">Shorten</button>
+        </form>
+
+        <div class="trust-row">
+            <div class="trust-item">
+                <strong>Instant links</strong>
+                <span>Create short URLs in seconds</span>
+            </div>
+            <div class="trust-item">
+                <strong>Private dashboard</strong>
+                <span>Manage links securely</span>
+            </div>
+            <div class="trust-item">
+                <strong>Actionable insights</strong>
+                <span>Clicks, QR, and visibility</span>
+            </div>
+        </div>
+
+        {% if not current_user %}
+        <div class="hero-actions hero-actions-left">
+            <a href="{{ url_for('register') }}" class="btn primary">Get started free</a>
+            <a href="{{ url_for('login') }}" class="btn secondary">Sign in</a>
+        </div>
+        {% else %}
+        <div class="hero-actions hero-actions-left">
+            <a href="{{ url_for('dashboard') }}" class="btn primary">Open dashboard</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="landing-right glass">
+        <div class="preview-card">
+            <div class="preview-head">
+                <div>
+                    <span class="preview-kicker">Performance snapshot</span>
+                    <h3>Campaign links</h3>
+                </div>
+                <div class="preview-status">Live</div>
+            </div>
+
+            <div class="preview-featured">
+                <div class="preview-featured-copy">
+                    <span class="preview-label">Top link</span>
+                    <div class="preview-short">yourdomain.com/spring-sale</div>
+                    <div class="preview-url">https://www.example.com/campaigns/spring-sale-2026-launch-offer</div>
+                </div>
+                <div class="preview-stat-card">
+                    <strong>1,284</strong>
+                    <span>Total clicks</span>
+                </div>
+            </div>
+
+            <div class="preview-list">
+                <div class="preview-list-item">
+                    <span class="preview-list-name">Product launch</span>
+                    <span class="preview-list-value">432 clicks</span>
+                </div>
+                <div class="preview-list-item">
+                    <span class="preview-list-name">Instagram bio</span>
+                    <span class="preview-list-value">281 clicks</span>
+                </div>
+                <div class="preview-list-item">
+                    <span class="preview-list-name">Poster QR</span>
+                    <span class="preview-list-value">89 scans</span>
+                </div>
+            </div>
+
+            <div class="preview-metrics">
+                <div>
+                    <strong>24/7</strong>
+                    <span>Tracking</span>
+                </div>
+                <div>
+                    <strong>QR</strong>
+                    <span>Ready</span>
+                </div>
+                <div>
+                    <strong>Clean</strong>
+                    <span>Sharing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="feature-strip">
+    <div class="feature-card glass">
+        <span class="feature-eyebrow">Management</span>
+        <h3>Organize every short link in one clean workspace.</h3>
+        <p>Your dashboard keeps URLs, QR codes, and click performance easy to scan and manage.</p>
+    </div>
+    <div class="feature-card glass">
+        <span class="feature-eyebrow">Sharing</span>
+        <h3>Generate QR codes automatically for faster distribution.</h3>
+        <p>Perfect for printed posters, presentations, product packaging, and social campaigns.</p>
+    </div>
+    <div class="feature-card glass">
+        <span class="feature-eyebrow">Analytics</span>
+        <h3>Track clicks visually with a dashboard that feels premium.</h3>
+        <p>Monitor performance with clean charts and instant visibility into link activity.</p>
+    </div>
+</section>
+
+<section class="premium-band">
+    <div class="premium-band-copy">
+        <span class="hero-badge">Why it feels premium</span>
+        <h2>Designed like a product landing page, not a basic student demo.</h2>
+        <p>
+            This home page now uses stronger typography, layered surfaces, richer spacing,
+            and a more polished content flow so the project feels portfolio-ready.
+        </p>
+    </div>
+    <div class="premium-band-stats">
+        <div class="premium-stat glass">
+            <strong>Secure</strong>
+            <span>User auth with session protection</span>
+        </div>
+        <div class="premium-stat glass">
+            <strong>Responsive</strong>
+            <span>Designed for desktop and mobile</span>
+        </div>
+        <div class="premium-stat glass">
+            <strong>Portfolio-ready</strong>
+            <span>Professional visual presentation</span>
+        </div>
+    </div>
+</section>
+{% endblock %}

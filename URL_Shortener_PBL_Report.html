@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener System PBL Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+
+        body {
+            font-family: "Times New Roman", serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #111;
+        }
+
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .page-break { page-break-before: always; }
+        .title-space { margin-top: 90px; }
+        .big-gap { margin-top: 40px; }
+        h1, h2, h3 {
+            margin-bottom: 8px;
+        }
+        h1 { font-size: 22pt; }
+        h2 { font-size: 16pt; margin-top: 24px; }
+        h3 { font-size: 13pt; margin-top: 18px; }
+        p { margin: 8px 0; text-align: justify; }
+        ul, ol { margin-top: 6px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            vertical-align: top;
+        }
+        .no-border td {
+            border: none;
+            padding: 4px 0;
+        }
+        .signature-block {
+            margin-top: 60px;
+        }
+        .mono {
+            font-family: "Courier New", monospace;
+            font-size: 10.5pt;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h2>ITS ENGINEERING COLLEGE, GREATER NOIDA</h2>
+        <h3>Department of Computer Science and Engineering</h3>
+
+        <div class="title-space"></div>
+
+        <h2>Project Based Learning Report</h2>
+        <p class="center"><strong>on</strong></p>
+        <h1>URL SHORTENER SYSTEM</h1>
+
+        <div class="big-gap"></div>
+
+        <h3>Submitted By</h3>
+        <p class="center">Student 1 Name (Roll No.)</p>
+        <p class="center">Student 2 Name (Roll No.)</p>
+        <p class="center">Student 3 Name (Roll No.)</p>
+        <p class="center">Student 4 Name (Roll No.)</p>
+
+        <div class="big-gap"></div>
+
+        <table class="no-border">
+            <tr><td><strong>COURSE</strong></td><td>: B.Tech. (CSE)</td></tr>
+            <tr><td><strong>SEMESTER</strong></td><td>: III</td></tr>
+            <tr><td><strong>SUBJECT</strong></td><td>: Python Programming</td></tr>
+            <tr><td><strong>SUBJECT CODE</strong></td><td>: BCC302</td></tr>
+            <tr><td><strong>FACULTY NAME</strong></td><td>: ____________________</td></tr>
+        </table>
+
+        <div class="big-gap"></div>
+        <p class="center"><strong>(2025-2026)</strong></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="center">
+        <h2>Certificate</h2>
+    </div>
+
+    <p>
+        This is to certify that the Project Based Learning (PBL) report entitled
+        <strong>“URL Shortener System”</strong> has been successfully carried out by the following
+        students of B.Tech. (Computer Science and Engineering), Semester III, as a part of
+        the Project Based Learning during the academic session 2025-2026.
+    </p>
+
+    <p><strong>Submitted by:</strong></p>
+    <ul>
+        <li>Name: ____________________ &nbsp;&nbsp;&nbsp; Roll No.: __________</li>
+        <li>Name: ____________________ &nbsp;&nbsp;&nbsp; Roll No.: __________</li>
+        <li>Name: ____________________ &nbsp;&nbsp;&nbsp; Roll No.: __________</li>
+        <li>Name: ____________________ &nbsp;&nbsp;&nbsp; Roll No.: __________</li>
+    </ul>
+
+    <p>
+        The work has been completed under the guidance of <strong>____________________</strong>.
+        The project is a part of continuous internal assessment under the PBL framework and
+        reflects the students’ effort in applying theoretical knowledge to solve a practical
+        real-world problem. To the best of our knowledge, this work is original and has not
+        been submitted elsewhere for any other academic purpose.
+    </p>
+
+    <div class="signature-block">
+        <p><strong>Faculty Guide</strong></p>
+        <p>Signature: ____________________</p>
+        <p>Name: ____________________</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Abstract</h2>
+    <p>
+        The URL Shortener System is a web-based application developed to transform long and
+        complex web addresses into short, manageable, and shareable links. In the digital
+        environment, lengthy URLs are difficult to remember, inconvenient to share in social
+        media posts, and unsuitable for printed resources such as posters or handouts. This
+        project addresses that problem by providing a secure and user-friendly platform through
+        which users can generate short URLs, monitor click counts, and manage all created links
+        through a personal dashboard. The system is built using Python and Flask for the backend,
+        SQLite for database management, and HTML, CSS, JavaScript, and Chart.js for the frontend
+        interface and analytics visualization. Additional features such as QR code generation,
+        copy-to-clipboard functionality, user authentication, and a responsive premium user
+        interface improve the usefulness of the application. The final outcome is a beginner-friendly
+        yet professionally structured project that demonstrates web development, database integration,
+        session management, data tracking, and user interface design in one complete system.
+    </p>
+
+    <h2>1. Problem Statement</h2>
+    <p>
+        Internet users frequently work with long URLs that are difficult to share, visually
+        unattractive, and hard to manage. These problems become more noticeable in academic
+        work, business promotion, social media marketing, and printed communication materials.
+        A simple and efficient system is needed to convert long URLs into short links while
+        preserving the original destination, tracking usage, and allowing users to manage their
+        links securely. The relevance of this problem is high because shortened links are widely
+        used in digital campaigns, product promotions, mobile sharing, and analytics-based web
+        applications.
+    </p>
+
+    <h2>2. Objectives</h2>
+    <ol>
+        <li>To design and develop a Flask-based web application for shortening long URLs.</li>
+        <li>To generate unique short codes for each original URL.</li>
+        <li>To implement user registration, login, and session-based authentication.</li>
+        <li>To provide a dashboard for managing shortened URLs and monitoring click counts.</li>
+        <li>To integrate QR code generation and graphical analytics for improved usability.</li>
+    </ol>
+
+    <h2>3. Methodology</h2>
+    <h3>3.1 Development Approach</h3>
+    <p>
+        The project follows an incremental development methodology. The system was first planned
+        module by module, starting from authentication and database design, followed by core URL
+        shortening logic, dashboard creation, analytics integration, and interface enhancement.
+        Each module was tested individually before integration into the full application.
+    </p>
+
+    <h3>3.2 Step-by-Step Workflow</h3>
+    <ol>
+        <li>Study the problem and identify the functional requirements.</li>
+        <li>Design the database tables for users and URL records.</li>
+        <li>Develop authentication routes for user registration and login.</li>
+        <li>Create the URL shortening mechanism and unique short code generation logic.</li>
+        <li>Implement redirection from short URL to original URL.</li>
+        <li>Track every click by incrementing the stored click count.</li>
+        <li>Generate QR codes for each shortened URL.</li>
+        <li>Build a modern responsive user interface for the home page and dashboard.</li>
+        <li>Display click analytics using Chart.js.</li>
+        <li>Test the application for correct functionality and usability.</li>
+    </ol>
+
+    <h3>3.3 Tools and Technologies Used</h3>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Technology Used</th>
+        </tr>
+        <tr>
+            <td>Programming Language</td>
+            <td>Python 3</td>
+        </tr>
+        <tr>
+            <td>Web Framework</td>
+            <td>Flask</td>
+        </tr>
+        <tr>
+            <td>Database</td>
+            <td>SQLite</td>
+        </tr>
+        <tr>
+            <td>Frontend</td>
+            <td>HTML, CSS, JavaScript</td>
+        </tr>
+        <tr>
+            <td>Charting Library</td>
+            <td>Chart.js</td>
+        </tr>
+        <tr>
+            <td>QR Code Library</td>
+            <td>qrcode</td>
+        </tr>
+        <tr>
+            <td>Image Processing</td>
+            <td>Pillow</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>4. System Design / Architecture</h2>
+    <h3>4.1 Architecture Overview</h3>
+    <p>
+        The URL Shortener System follows a three-layer architecture consisting of presentation
+        layer, application layer, and data layer. The presentation layer handles user interaction
+        through HTML templates and CSS styling. The application layer contains the Flask routes,
+        business logic, session handling, and request processing. The data layer uses SQLite for
+        storing registered users, original URLs, short codes, and click counts.
+    </p>
+
+    <h3>4.2 Block Flow</h3>
+    <p class="mono">
+        User Input -> Flask Route -> Validation -> Database Storage -> Short URL Generation ->
+        Dashboard Display -> Redirect Route -> Click Count Update -> Analytics Chart
+    </p>
+
+    <h3>4.3 Workflow Explanation</h3>
+    <ul>
+        <li>The user first registers and logs in to the application.</li>
+        <li>After authentication, the user enters a long URL in the dashboard form.</li>
+        <li>The application validates the URL and generates a unique short code.</li>
+        <li>The original URL and short code are stored in the SQLite database.</li>
+        <li>The system creates a QR code image for the short link.</li>
+        <li>When the short URL is visited, the system redirects to the original URL.</li>
+        <li>The click count is updated every time the short URL is accessed.</li>
+        <li>The dashboard displays all saved URLs and their click analytics.</li>
+    </ul>
+
+    <h3>4.4 Database Design</h3>
+    <table>
+        <tr>
+            <th>Table Name</th>
+            <th>Important Fields</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>users</td>
+            <td>id, name, email, password_hash, created_at</td>
+            <td>Stores user account information securely</td>
+        </tr>
+        <tr>
+            <td>urls</td>
+            <td>id, user_id, original_url, short_code, click_count, created_at</td>
+            <td>Stores shortened links and tracking data</td>
+        </tr>
+    </table>
+
+    <h2>5. Implementation</h2>
+    <h3>5.1 Project Structure</h3>
+    <p>The project follows a clear and modular file structure:</p>
+    <p class="mono">
+        app.py<br>
+        templates/base.html<br>
+        templates/index.html<br>
+        templates/login.html<br>
+        templates/register.html<br>
+        templates/dashboard.html<br>
+        static/style.css<br>
+        static/script.js<br>
+        static/dashboard.js<br>
+        static/qr/
+    </p>
+
+    <h3>5.2 Main Functional Modules</h3>
+    <ul>
+        <li><strong>Authentication Module:</strong> Handles registration, login, logout, and session management.</li>
+        <li><strong>URL Shortening Module:</strong> Generates short codes and stores URL mappings.</li>
+        <li><strong>Redirection Module:</strong> Redirects the short URL to the original destination.</li>
+        <li><strong>Analytics Module:</strong> Displays click counts using a bar chart.</li>
+        <li><strong>QR Module:</strong> Generates QR code images for each shortened link.</li>
+    </ul>
+
+    <h3>5.3 Key Functions Used</h3>
+    <table>
+        <tr>
+            <th>Function Name</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>init_db()</td>
+            <td>Creates database tables if they do not exist</td>
+        </tr>
+        <tr>
+            <td>generate_unique_code()</td>
+            <td>Produces a unique short code for a URL</td>
+        </tr>
+        <tr>
+            <td>shorten_url()</td>
+            <td>Saves original URL and short code in the database</td>
+        </tr>
+        <tr>
+            <td>redirect_short_url()</td>
+            <td>Redirects a short URL and updates click count</td>
+        </tr>
+        <tr>
+            <td>dashboard()</td>
+            <td>Displays user-created URLs and analytics data</td>
+        </tr>
+    </table>
+
+    <h3>5.4 Interface Implementation</h3>
+    <p>
+        The frontend was designed with a premium and modern look using white and light-orange
+        color tones, layered sections, hover effects, button animations, and a responsive layout.
+        The home page presents the project like a product landing page, while the dashboard provides
+        a practical management view for user-created links.
+    </p>
+
+    <div class="page-break"></div>
+
+    <h2>6. Results and Analysis</h2>
+    <h3>6.1 Results Obtained</h3>
+    <p>The final project successfully performs all required functions:</p>
+    <ul>
+        <li>Converts long URLs into short shareable links.</li>
+        <li>Redirects the short URLs correctly to the original web pages.</li>
+        <li>Tracks the number of clicks for each shortened link.</li>
+        <li>Allows registered users to manage only their own links.</li>
+        <li>Generates QR codes automatically for each short link.</li>
+        <li>Displays graphical analytics using Chart.js.</li>
+    </ul>
+
+    <h3>6.2 Analysis</h3>
+    <p>
+        The system performs efficiently for small to medium-scale usage because SQLite offers
+        fast local storage and Flask processes requests quickly for this project size. The
+        use of session-based login improves privacy by restricting dashboard access to authenticated
+        users only. The click count mechanism allows the user to observe link performance in real
+        time. QR code support adds practical value by enabling offline-to-online redirection through
+        mobile scanning.
+    </p>
+
+    <h3>6.3 Sample Observation Table</h3>
+    <table>
+        <tr>
+            <th>Test Case</th>
+            <th>Input</th>
+            <th>Expected Output</th>
+            <th>Observed Result</th>
+        </tr>
+        <tr>
+            <td>Create Short URL</td>
+            <td>Valid long URL</td>
+            <td>Short URL generated</td>
+            <td>Successful</td>
+        </tr>
+        <tr>
+            <td>Custom Code Entry</td>
+            <td>Unique custom code</td>
+            <td>Custom short URL created</td>
+            <td>Successful</td>
+        </tr>
+        <tr>
+            <td>Redirect Test</td>
+            <td>Short URL click</td>
+            <td>Open original URL</td>
+            <td>Successful</td>
+        </tr>
+        <tr>
+            <td>Analytics Update</td>
+            <td>Repeated clicks</td>
+            <td>Click count increases</td>
+            <td>Successful</td>
+        </tr>
+    </table>
+
+    <h2>7. Applications and Future Scope</h2>
+    <h3>7.1 Applications</h3>
+    <ul>
+        <li>Social media and digital marketing campaigns</li>
+        <li>College event promotion and QR-based announcements</li>
+        <li>Business product links and customer engagement campaigns</li>
+        <li>Portfolio projects and personal branding</li>
+        <li>Printed posters, brochures, and presentations</li>
+    </ul>
+
+    <h3>7.2 Future Scope</h3>
+    <ul>
+        <li>Adding custom branded domains for short links</li>
+        <li>Supporting link expiration dates</li>
+        <li>Adding edit and delete operations for URLs</li>
+        <li>Introducing advanced analytics such as browser, location, and device data</li>
+        <li>Providing an admin panel for full system monitoring</li>
+        <li>Deploying the application on a cloud server for permanent public access</li>
+    </ul>
+
+    <h2>8. Conclusion</h2>
+    <p>
+        The URL Shortener System successfully demonstrates how Python and Flask can be used to
+        build a complete real-world web application. The project combines backend logic, database
+        management, authentication, data tracking, QR generation, analytics, and modern interface
+        design in a single integrated solution. It is educationally valuable because it helps
+        students understand practical software development concepts and industrially relevant
+        because URL shortening services are widely used in digital communication. The project
+        is therefore suitable for college submission as well as portfolio presentation.
+    </p>
+
+    <h2>9. References</h2>
+    <ol>
+        <li>Flask Documentation. Available at: https://flask.palletsprojects.com/</li>
+        <li>Python Documentation. Available at: https://docs.python.org/3/</li>
+        <li>SQLite Documentation. Available at: https://www.sqlite.org/docs.html</li>
+        <li>Chart.js Documentation. Available at: https://www.chartjs.org/docs/latest/</li>
+        <li>qrcode Python Package Documentation. Available at: https://pypi.org/project/qrcode/</li>
+        <li>Pillow Documentation. Available at: https://pillow.readthedocs.io/</li>
+    </ol>
+
+    <h2>10. Annexure</h2>
+    <h3>10.1 Software and Hardware Requirements</h3>
+    <table>
+        <tr>
+            <th>Requirement Type</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>Operating System</td>
+            <td>Windows / macOS / Linux</td>
+        </tr>
+        <tr>
+            <td>Programming Language</td>
+            <td>Python 3</td>
+        </tr>
+        <tr>
+            <td>Editor / IDE</td>
+            <td>VS Code / PyCharm / Codex environment</td>
+        </tr>
+        <tr>
+            <td>RAM</td>
+            <td>4 GB or above</td>
+        </tr>
+        <tr>
+            <td>Storage</td>
+            <td>500 MB free space minimum</td>
+        </tr>
+    </table>
+
+    <h3>10.2 Project Highlights</h3>
+    <ul>
+        <li>Beginner-friendly implementation with professional output</li>
+        <li>Secure user login and session handling</li>
+        <li>Interactive dashboard with click analytics</li>
+        <li>QR code generation for every short link</li>
+        <li>Responsive premium interface for portfolio use</li>
+    </ul>
+
+    <h3>10.3 GitHub / Deployment Link</h3>
+    <p>Add your GitHub repository link here: ________________________________</p>
+</body>
+</html>
